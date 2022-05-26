@@ -24,4 +24,12 @@ describe('Testes da função HandlerElephants', () => {
   it('testa se `availability` retorna a quantidade correta de dias que é possivel visitar elefantes', () => {
     expect(['Friday', 'Saturday', 'Sunday', 'Tuesday']).toStrictEqual(handlerElephants('availability'));
   });
+
+  it('testa se ao receber o paramentro `undefined` a função retorna undefined', () => {
+    expect(undefined).toBe(handlerElephants());
+  });
+
+  it('testa se ao receber receber um parametro diferente de uma `string` retorna "Parâmetro inválido, é necessário uma string"', () => {
+    expect('Parâmetro inválido, é necessário uma string').toEqual(handlerElephants(!typeof 'string'));
+  });
 });
