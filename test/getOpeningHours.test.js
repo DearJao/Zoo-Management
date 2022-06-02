@@ -1,7 +1,7 @@
 const getOpeningHours = require('../src/getOpeningHours');
 
 describe('Testes da função getOpeningHours', () => {
-  // const dayError = 'The day must be valid. Example: Monday';
+  const dayError = 'The day must be valid. Example: Monday';
 
   const expected = {
     Tuesday: { open: 8, close: 6 },
@@ -49,10 +49,6 @@ describe('Testes da função getOpeningHours', () => {
     expect(openedZoo).toEqual(getOpeningHours('Tuesday', '09:00-AM'));
   });
 
-  // it('retorna invalido para os argumentos `Thu, 09:00-AM`', () => {
-  //   expect(() => { getOpeningHours('Webnesday', '09:00-AM'); }).toThrow(dayError);
-  // });
-
   it('retorna `The abbreviation must be \'AM\' or \'PM\'` para `Friday, 09:00-ZM`', () => {
     expect(() => { getOpeningHours('Wednesday', '09:00-AP'); }).toThrow('The abbreviation must be \'AM\' or \'PM\'');
   });
@@ -71,5 +67,9 @@ describe('Testes da função getOpeningHours', () => {
 
   it('retorna `The minutes must be between 0 and 59` para os parametros `Wednesday`, `10:67-AM`', () => {
     expect(() => { getOpeningHours('Wednesday', '10:67-AM'); }).toThrow('The minutes must be between 0 and 59');
+  });
+
+  it('retorna invalido para os argumentos `Webnesday, 10:00-AM`', () => {
+    expect(() => { getOpeningHours('Webnesday', '10:00-AM'); }).toThrow(dayError);
   });
 });
