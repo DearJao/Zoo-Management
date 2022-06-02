@@ -32,4 +32,8 @@ describe('Testes da função HandlerElephants', () => {
   it('testa se ao receber receber um parametro diferente de uma `string` retorna "Parâmetro inválido, é necessário uma string"', () => {
     expect('Parâmetro inválido, é necessário uma string').toEqual(handlerElephants(!typeof 'string'));
   });
+
+  it('se a `string` passada não comtempla nenhuma funcionalidade retorna `null`', () => {
+    expect(handlerElephants('Availability')).toBe(null);
+  });
 });
